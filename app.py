@@ -9,6 +9,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 app.config['SECRET_KEY']= 'shhSecret!'
 
 connect_db(app)
+app.app_context().push()
 
 @app.route('/')
 def homepage():
