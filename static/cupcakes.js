@@ -19,7 +19,7 @@ async function showCupcakes() {
     }
 }
 
-$('#new-cupcake-form').on('submit', async function (e){
+$('#cupcake-form').on('submit', async function (e){
     e.preventDefault();
 
     let flavor= $('#form-flavor').val();
@@ -32,7 +32,7 @@ $('#new-cupcake-form').on('submit', async function (e){
     let newCupcake= $(createCupcakeHTML(newCupcakeRes.data.cupcake));
 
     $('#cupcake-list').append(newCupcake);
-    $('#new-cupcake-form').trigger('reset');
+    $('#cupcake-form').trigger('reset');
 });
 
 $('#cupcake-list').on('click', ".delete-btn", async function(e){
