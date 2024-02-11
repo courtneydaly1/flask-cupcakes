@@ -1,13 +1,13 @@
-const BASE_URL= 'http://localhost:5000/api'
+const BASE_URL= 'http://127.0.0.1:5000/api'
 
 function createCupcakeHTML(cupcake) {
     return `
-    <div data-cupcake-id='${cupcake}'>
+    <div data-cupcake-id='${cupcake.id}'>
     <li>
     ${cupcake.flavor}/${cupcake.size}/${cupcake.rating} 
-    <button class='delete-btn'> X </button>
+    <button class='delete-btn'> DELETE </button>
     </li>
-    <img class='cupcake-img' src='${cupcake.image} alt='No image provided'</div>`;
+    <img class='cupcake-img' src='${cupcake.image}' alt='No image provided'</div>`;
 }
 
 async function showCupcakes() {

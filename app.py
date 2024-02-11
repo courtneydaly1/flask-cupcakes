@@ -1,6 +1,7 @@
 """Flask app for Cupcakes"""
 from flask import Flask, request, jsonify, render_template
 from models import Cupcake, db, connect_db
+from flask_cors import CORS, cross_origin
 
 app= Flask(__name__)
 
@@ -19,7 +20,7 @@ def homepage():
 
 @app.route('/api/cupcakes')
 def list_cupcakes():
-    """return ALL cupcakes available from api inn JSON"""
+    """return ALL cupcakes available from api in JSON"""
 
     cupcakes= [cupcake.to_dict() for cupcake in Cupcake.query.all()]
     
@@ -33,7 +34,9 @@ def get_cupcake(cupcake_id):
     
     return jsonify(cupcake=cupcake.to_dict())
 
+
 @app.route('/api/cupcakes', methods=['POST'])
+@cross_origin(origin='*')
 def create_cupcake():
     """adds a new cupcake to returns data about it"""
     
@@ -69,7 +72,7 @@ def update_cupcake(cupcake_id):
     
     return jsonify(cupcake=cupcake.to_dict())
 
-@app.route('/api/cupcake/<int:cupcake_id>', methods=['DELETE'])
+@app.route('/api/cupcakes/<int:cupcake_id>', methods=['DELETE'])
 def remove_cupcake(cupcake_id):
     """delete a specific cupcake, return confirm message""" 
     

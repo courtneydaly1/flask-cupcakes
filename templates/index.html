@@ -11,14 +11,20 @@
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
     crossorigin="anonymous"
   />
+    <meta name="referrer" content="no-referrer">
 </head>
+
+
 <body>
 <div class="container jumbotron">
     <h1>Cupcakes!!</h1>
-
-    <ul id= 'cupcake-list'>
-    </ul>
-
+   
+    <div class="container mt-5">
+        {% for msg in get_flashed_messages() %}
+        <div class="alert alert-primary">{{ msg }}</div>
+        {% endfor %}
+    </div>
+      
     <h3 class="text-info">Add a Cupcake!</h3>
     <form id="cupcake-form">
         <div>
@@ -38,17 +44,20 @@
 
         <div>
             <label for="form-image">Image:</label>
-            <input name="image" id="form-image" placeholder="ex: http://wwww...">
+            <input name="image" id="form-image" placeholder="ex: http://wwww..." alt="Resized Image" class="small-image">
         </div>
 
         <button class="btn btn-primary">Add</button>
 
     </form>
+    <ul id= 'cupcake-list'>
+        <!-- already made cupcakes here -->
+    </ul>
 
 
 </div>
    <!-- JS and jQuery and Bootstrap Bundle (includes Popper) -->
-   <script src="/static/cupcakes.js"></script>
+  
    <script src="https://unpkg.com/axios/dist/axios.js"></script>
    <script
    src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -59,6 +68,7 @@
    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
    crossorigin="anonymous"
- ></script>    
+ ></script>   
+ <script src="/static/cupcakes.js"></script> 
 </body>
 </html>
